@@ -1,0 +1,52 @@
+{
+  "name": "ios-uicatalog",
+  "version": "2.0.9",
+  "description": "Apple iOS UICatalog app",
+  "main": "index.js",
+  "license": "Apache-2.0",
+  "scripts": {
+    "clean": "rm -rf node_modules && rm -f package-lock.json && npm install",
+    "build": "gulp ios-apps:install",
+    "install": "gulp ios-apps:install",
+    "test": "gulp once",
+    "watch": "gulp watch",
+    "lint": "gulp lint",
+    "lint:fix": "gulp lint --fix",
+    "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
+    "precommit-test": "gulp lint"
+  },
+  "pre-commit": [
+    "precommit-msg",
+    "precommit-test"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/appium/ios-uicatalog.git"
+  },
+  "keywords": [
+    "appium",
+    "ios",
+    "uicatalog"
+  ],
+  "os": [
+    "darwin"
+  ],
+  "files": [
+    "gulpfile.js",
+    "index.js",
+    "uicatalog-info.md",
+    "UICatalog",
+    "UICatalog.xcodeproj"
+  ],
+  "author": "",
+  "homepage": "https://github.com/appium/ios-uicatalog",
+  "dependencies": {
+    "appium-gulp-plugins": "^3.6.1",
+    "gulp": "^4.0.0"
+  },
+  "devDependencies": {
+    "ajv": "^6.5.3",
+    "eslint-config-appium": "^4.0.1",
+    "pre-commit": "^1.2.2"
+  }
+}
