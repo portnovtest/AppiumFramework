@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Appium Framework">
-    <test name="Selendroid App Test">
+    <test name="SelendroidHomeScreen Test">
         <classes>
-            <class name="testcases.ios.UICatalogTest"/>
+            <class name="testcases.android.SelendroidHomeScreenValidationTest"/>
+        </classes>
+    </test>
+    <test name="WebViewScreen Test">
+        <classes>
+            <class name="testcases.android.WebViewScreenValidationTest"/>
         </classes>
     </test>
 </suite>

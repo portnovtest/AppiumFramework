@@ -38,6 +38,7 @@ public class CommonUtils {
     protected static int DEVICE_READY_TIMEOUT;
 
 
+
     public static void loadIOSConfigProp(String propertyFileName) throws IOException {
 
         FileInputStream fis = new FileInputStream(System.getProperty("user.dir") +
@@ -73,7 +74,7 @@ public class CommonUtils {
         prop.load(fis);
         EXPLICIT_WAIT = Integer.parseInt(prop.getProperty("explicit.wait"));
         DEFAULT_WAIT = Integer.parseInt(prop.getProperty("default.wait"));
-        APPLICATION_PATH = prop.getProperty("application.path");
+        //APPLICATION_PATH = prop.getProperty("application.path");
         BASE_PKG = prop.getProperty("base.pkg");
         APPIUM_SERVER_PORT = Integer.parseInt(prop.getProperty("appium.server.port"));
         APPLICATION_ACTIVITY = prop.getProperty("application.activity");
@@ -87,12 +88,13 @@ public class CommonUtils {
     }
 
     public static void setAndroidCapabilities(){
-        capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, CommonUtils.BROWSER_NAME);
+        //File app = new File("/Users/phildolganov/IdeaProjects/AppiumFramework/src/test/resources/app/selendroid-test-app-0.17.0.apk");
+        //capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, CommonUtils.BROWSER_NAME);
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, CommonUtils.PLATFORM_VERSION);
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, CommonUtils.PLATFORM_NAME);
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, CommonUtils.DEVICE_NAME);
-        capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, CommonUtils.AUTOMATION_INSTRUMENTATION);
-        capabilities.setCapability(MobileCapabilityType.APP, CommonUtils.APPLICATION_PATH);
+        //capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, CommonUtils.AUTOMATION_INSTRUMENTATION);
+        //capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
         capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, CommonUtils.NEW_COMMAND_TIMEOUT);
         capabilities.setCapability(AndroidMobileCapabilityType.DEVICE_READY_TIMEOUT, CommonUtils.DEVICE_READY_TIMEOUT);
         capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, CommonUtils.APPLICATION_ACTIVITY);
@@ -106,10 +108,10 @@ public class CommonUtils {
         return driver;
     }
 
-    public static AppiumDriver getAndroidDriver() throws MalformedURLException {
+    public static AndroidDriver getAndroidDriver() throws MalformedURLException {
         serverUrl = new URL("http://localhost:" + APPIUM_SERVER_PORT + "/wd/hub");
         driver = new AndroidDriver(new URL("http://localhost:4723/wd/hub"),capabilities);
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        return driver;
+        return (AndroidDriver) driver;
     }
 }

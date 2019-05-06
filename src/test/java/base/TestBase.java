@@ -3,9 +3,13 @@ package base;
 import io.appium.java_client.AppiumDriver;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
+import screens.android.nativeapp.SelendroidHomeScreen;
+import screens.android.nativeapp.WebViewInteractionScreen;
 import screens.ios.UICatalogMainScreen;
 import utils.CommonUtils;
 
@@ -16,8 +20,11 @@ public class TestBase {
 
     public static AppiumDriver driver;
     public static UICatalogMainScreen ucms;
-    public static String loadPropertyFile = "IOS_UICatalog.properties";
+    public static String loadPropertyFile = "Android_selendroidTestApp.properties";
     public static Logger log = Logger.getLogger("devpinoyLogger");
+
+    public SelendroidHomeScreen homeScreen;
+    public WebViewInteractionScreen webview;
 
     @BeforeSuite
     public void setUp() throws IOException {
@@ -33,6 +40,9 @@ public class TestBase {
                 CommonUtils.setAndroidCapabilities();
                 log.debug("Loading Android Property file");
                 driver = CommonUtils.getAndroidDriver();
+                WebDriverWait wait = new WebDriverWait(driver,20);
+                wait.until(ExpectedConditions.visibilityOf(driver.findElementById("android:id/alertTitle")));
+                driver.findElementById("android:id/button1").click();
             }
         }
     }

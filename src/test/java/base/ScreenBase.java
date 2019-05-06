@@ -6,10 +6,11 @@ import org.openqa.selenium.support.PageFactory;
 
 public class ScreenBase {
 
-    public  AppiumDriver driver;
+    public static AppiumDriver driver;
 
     public ScreenBase(AppiumDriver driver) {
         this.driver = driver;
+        loadElements();
     }
 
     public void loadElements(){
