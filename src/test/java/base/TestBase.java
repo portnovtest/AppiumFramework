@@ -10,8 +10,10 @@ import org.testng.annotations.BeforeSuite;
 
 import screens.android.nativeapp.SelendroidHomeScreen;
 import screens.android.nativeapp.WebViewInteractionScreen;
+import screens.android.nativeapp.makemytrip.BookingFlights;
 import screens.ios.UICatalogMainScreen;
 import utils.CommonUtils;
+import utils.ExcelReader;
 
 import java.io.IOException;
 
@@ -20,11 +22,14 @@ public class TestBase {
 
     public static AppiumDriver driver;
     public static UICatalogMainScreen ucms;
-    public static String loadPropertyFile = "Android_selendroidTestApp.properties";
+    public static String loadPropertyFile = "makemytrip.properties";
     public static Logger log = Logger.getLogger("devpinoyLogger");
 
     public SelendroidHomeScreen homeScreen;
     public WebViewInteractionScreen webview;
+    public BookingFlights mmt;
+    public static ExcelReader excel = new ExcelReader(System.getProperty("user.dir") +
+            "/src/test/resources/properties/testdata.xlsx");
 
     @BeforeSuite
     public void setUp() throws IOException {
